@@ -1,0 +1,31 @@
+{
+  "name": "parcube",
+  "version": "1.0.0",
+  "description": "making parking better for everyone",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "app:lint": "cd app && npm run lint",
+    "app:check-types": "cd app && npm run check-types",
+    "firebase:lint": "cd firebase/functions && npm run lint",
+    "firebase:check-types": "cd firebase/functions && npm run check-types",
+    "docs:install": "cd doc/website && npm install",
+    "docs:build": "cd doc/website && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CSC301H5/finalprojectw23-parcube.git"
+  },
+  "author": "parcube",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CSC301H5/finalprojectw23-parcube/issues"
+  },
+  "homepage": "https://github.com/CSC301H5/finalprojectw23-parcube#readme",
+  "devDependencies": {
+    "husky": "^8.0.0"
+  }
+}
