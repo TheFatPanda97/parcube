@@ -1,0 +1,7 @@
+{
+  "eslint.workingDirectories": [
+    "./firebase/functions",
+    "./app"
+  ],
+  "files.autoSave": "off"
+}

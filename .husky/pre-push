@@ -1,0 +1,39 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+if git diff --stat "origin/$(git branch --show-current)" | grep 'app/.*.tsx\?'; then
+  # Check ESLint Standards
+  npm run app:lint ||
+  (
+          echo '😤🏀👋😤 App Failed linting! 😤🏀👋😤
+                  ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+          false;
+  )
+
+  # Check tsconfig standards
+  npm run app:check-types ||
+  (
+      echo '😳😥❌😳 App Failed Type check! 😳😥❌😳
+                  Make the changes required above.'
+      false;
+  )
+fi
+
+if git diff --stat "origin/$(git branch --show-current)" | grep 'firebase/functions/src'; then
+  # Check ESLint Standards
+  npm run firebase:lint ||
+  (
+          echo '😤🏀👋😤 Firebase Failed linting! 😤🏀👋😤
+                  ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+          false;
+  )
+
+  # Check tsconfig standards
+  npm run firebase:check-types ||
+  (
+      echo '😳😥❌😳 Firebase Failed Type check! 😳😥❌😳
+                  Make the changes required above.'
+      false;
+  )
+fi
+# If everything passes... Now we can push
